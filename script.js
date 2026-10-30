@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // --- 4. Galería Dinámica por Categorías (Exactamente 4 imágenes por apartado) ---
+    // --- 4. Galería Dinámica por Categorías ---
     const galleryData = {
         themeparks: [
             { src: 'project-themeparks.jpg', title: 'Estructura Escenográfica Metal', desc: 'Soporte de acero forjado y tratamiento anti-corrosión.' },
@@ -141,8 +141,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('¡Gracias por comunicarte con el área técnica de Watermark Exchange LLC! Analizaremos tus requerimientos y te contactaremos en breve.');
-            contactForm.reset();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            const recipient = 'anginet@watermarkexchangellc.com';
+            const subject = encodeURIComponent(`New Quote Request / Message from ${name}`);
+            const body = encodeURIComponent(`Full Name: ${name}\nPhone: ${phone}\n\nProject Details:\n${message}`);
+
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
         });
     }
 
