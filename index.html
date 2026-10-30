@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermark Exchange LLC | Custom Fabrication & Consulting</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Embedded CSS Styles -->
+    <style>
+        /* ==========================================================================
+           Variables and Global Configuration - Logo Blue & Metal/Woodworking Style
+           ========================================================================== */
+        :root {
+            --primary-blue: #00BCD4;         /* Cyan Watercolor Blue[cite: 5] */
+            --primary-blue-hover: #0097A7;   /* Darker Blue for Hover[cite: 5] */
+            --wood-accent: #8C533C;          /* Warm Wood Tone[cite: 5] */
+            --steel-dark: #111820;           /* Deep Charcoal Steel[cite: 5] */
+            --steel-medium: #1F2937;         /* Industrial Metal[cite: 5] */
+            --steel-light: #F3F4F6;          /* Light Workshop[cite: 5] */
+            --border-metal: #374151;
+            --border-light: #E5E7EB;
+            --text-dark: #111827;
+            --text-muted: #4B5563;
+            --white: #FFFFFF;
+            
+            --font-heading: 'Rajdhani', sans-serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-muted);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .btn, .section-tag, .filter-btn {
+            font-family: var(--font-heading);
+            letter-spacing: 0.5px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .bg-light {
+            background-color: var(--steel-light);
+        }
+
+        .bg-dark-texture {
+            background-color: var(--steel-dark);
+            color: #D1D5DB;
+            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0, rgba(255,255,255,0.015) 1px, transparent 0, transparent 50px);
+        }
+
+        .bg-dark-texture .section-title {
+            color: var(--white);
+        }
+
+        .bg-dark-texture .section-description {
+            color: #9CA3AF;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ==========================================================================
+           Headings & Styled Buttons
+           ========================================================================== */
+        .section-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 50px;
+        }
+
+        .section-tag {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            color: var(--text-dark);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-description {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 30px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-radius: 2px;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--steel-dark);
+            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.25);
+            border-left: 4px solid #80DEEA;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-blue-hover);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 188, 212, 0.35);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 1px solid var(--primary-blue);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--steel-dark);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           Header / Navbar
+           ========================================================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 24, 32, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid var(--steel-medium);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .logo-img {
+            height: 65px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+            background-color: #FFFFFF;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #D1D5DB;
+            text-transform: uppercase;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-blue);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .bar {
+            width: 28px;
+            height: 3px;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        /* ==========================================================================
+           Hero Section
+           ========================================================================== */
+        .hero-section {
+            position: relative;
+            height: 90vh;
+            min-height: 620px;
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 90px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(17, 24, 32, 0.92) 0%, rgba(11, 15, 20, 0.85) 100%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(-45deg, rgba(0, 188, 212, 0.03) 0, rgba(0, 188, 212, 0.03) 2px, transparent 0, transparent 20px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 850px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background-color: rgba(0, 188, 212, 0.12);
+            border: 1px solid var(--primary-blue);
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            border-radius: 2px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            margin-bottom: 35px;
+            font-weight: 300;
+            color: #D1D5DB;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        /* ==========================================================================
+           About Section
+           ========================================================================== */
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .img-frame {
+            position: relative;
+            border: 3px solid var(--steel-medium);
+            border-radius: 4px;
+            padding: 8px;
+            background: var(--steel-dark);
+        }
+
+        .img-frame::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            width: 40px;
+            height: 40px;
+            border-top: 3px solid var(--primary-blue);
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .about-img {
+            border-radius: 2px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           Services Section
+           ========================================================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--steel-medium);
+            padding: 40px 30px;
+            border-radius: 4px;
+            border: 1px solid var(--border-metal);
+            border-top: 4px solid var(--steel-medium);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-top-color: var(--primary-blue);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .service-icon {
+            font-size: 2.6rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+        }
+
+        .service-card p {
+            color: #9CA3AF;
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================================================
+           Gallery Section
+           ========================================================================== */
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background-color: var(--steel-light);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+            padding: 10px 20px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--steel-dark);
+            color: var(--primary-blue);
+            border-color: var(--steel-dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .gallery-grid-dynamic {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            min-height: 350px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid-dynamic {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gallery-card {
+            position: relative;
+            border-radius: 3px;
+            overflow: hidden;
+            height: 290px;
+            background-color: var(--steel-dark);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(17, 24, 32, 0.95) 0%, rgba(17, 24, 32, 0.4) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            color: var(--white);
+            opacity: 0;
+            transition: var(--transition);
+            border-bottom: 4px solid var(--primary-blue);
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-card:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.35rem;
+            margin-bottom: 6px;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            color: #D1D5DB;
+        }
+
+        .gallery-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 188, 212, 0.9);
+            color: var(--steel-dark);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ==========================================================================
+           Contact Section
+           ========================================================================== */
+        .contact-info h3 {
+            font-size: 2rem;
+            color: var(--white);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .contact-lead {
+            margin-bottom: 30px;
+            color: #9CA3AF;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--steel-medium);
+            border: 1px solid var(--border-metal);
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .info-item h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .info-item p {
+            color: #9CA3AF;
+        }
+
+        .contact-form-wrapper {
+            background: var(--steel-medium);
+            padding: 40px;
+            border-radius: 4px;
+            border: 1px solid var(--border-metal);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .form-group label i {
+            color: var(--primary-blue);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--steel-dark);
+            border: 1px solid var(--border-metal);
+            border-radius: 2px;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 8px rgba(0, 188, 212, 0.3);
+        }
+
+        /* ==========================================================================
+           Footer
+           ========================================================================== */
+        .footer {
+            background-color: #0B0F14;
+            color: var(--white);
+            padding: 50px 0;
+            border-top: 1px solid var(--steel-medium);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 65px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            margin: 0 auto 15px;
+            background-color: #FFFFFF;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .footer-brand p {
+            color: #9CA3AF;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            font-family: var(--font-heading);
+            color: #9CA3AF;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+            .footer-logo {
+                margin: 0 0 10px 0;
+            }
+        }
+
+        /* ==========================================================================
+           Dynamic Floating Buttons (WhatsApp & YouTube)
+           ========================================================================== */
+        .floating-buttons {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float {
+            background-color: #25D366;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #20ba5a;
+        }
+
+        .youtube-float {
+            background-color: #FF0000;
+        }
+
+        .youtube-float:hover {
+            background-color: #d90000;
+        }
+
+        .float-btn::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 70px;
+            background-color: var(--steel-dark);
+            color: var(--white);
+            padding: 5px 12px;
+            font-size: 0.85rem;
+            font-family: var(--font-heading);
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-metal);
+        }
+
+        .float-btn:hover::before {
+            opacity: 1;
+        }
+
+        /* ==========================================================================
+           Animations & Responsive
+           ========================================================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 90px;
+                flex-direction: column;
+                background-color: var(--steel-dark);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+                padding: 30px 0;
+                border-bottom: 2px solid var(--primary-blue);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                gap: 22px;
+            }
+
+            .hero-title {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#hero" class="logo-link">
+                <img src="logo.jpg" alt="Watermark Exchange LLC Logo" class="logo-img">
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#services" class="nav-link">Shop & Production</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        <div class="container hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-screwdriver-wrench"></i> Precision Carpentry & Metalwork</span>
+            <h1 class="hero-title fade-in">Your Vision, Our Fabrication</h1>
+            <p class="hero-subtitle fade-in">Comprehensive custom manufacturing solutions, artisanal metalwork, technical carpentry, and consulting for demanding architectural projects.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary fade-in">Start Project</a>
+                <a href="#gallery" class="btn btn-secondary fade-in">View Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container grid-2">
+            <div class="about-image-wrapper reveal">
+                <div class="img-frame">
+                    <img src="about.jpg" alt="Watermark Metalwork and Carpentry Workshop" class="about-img">
+                </div>
+            </div>
+            <div class="about-text reveal">
+                <span class="section-tag"><i class="fa-solid fa-water"></i> OUR ESSENCE</span>
+                <h2 class="section-title">Mastery in Steel, Wood, and Design</h2>
+                <p>At <strong>Watermark Exchange LLC</strong>, we blend traditional metalwork and carpentry techniques with cutting-edge precision cutting and advanced digital modeling. We transform complex concepts into tangible, high-fidelity structures and finishes.</p>
+                <p>We work hand in hand with architects, scenic designers, and commercial development firms to ensure durability, aesthetic elegance, and technical accuracy in every delivery.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Production Section -->
+    <section id="services" class="section services-section bg-dark-texture">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag"><i class="fa-solid fa-gears"></i> TECHNICAL CAPABILITIES</span>
+                <h2 class="section-title">Workshop Specialties</h2>
+                <p class="section-description">Manufacturing processes structured to industrial standards with artisanal finishes.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                    <h3>Consulting & Planimetry</h3>
+                    <p>Technical advice, selection of alloys and fine woods, and feasibility engineering to optimize budgets.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-hammer"></i></div>
+                    <h3>Metalwork & Steel Structures</h3>
+                    <p>Forging, specialized welding, heavy structures, and custom decorative hardware in steel, iron, and stainless steel.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-tree"></i></div>
+                    <h3>Precision Carpentry</h3>
+                    <p>Fine cabinetmaking, machining of solid woods, architectural cladding, and high-end custom furniture.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
+                    <h3>Mixed Fabrication & Innovation</h3>
+                    <p>Integration of metals, wood components, glass, and scenic lighting for thematic and immersive projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery / Portfolio Section -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag"><i class="fa-solid fa-toolbox"></i> WORK PORTFOLIO</span>
+                <h2 class="section-title">Specialized Gallery</h2>
+                <p class="section-description">Explore featured samples of our metalwork, carpentry, and assemblies.</p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="gallery-filters reveal">
+                <button class="filter-btn active" data-filter="themeparks"><i class="fa-solid fa-fort-awesome"></i> Theme Parks</button>
+                <button class="filter-btn" data-filter="residential"><i class="fa-solid fa-house-chimney-window"></i> Residential</button>
+                <button class="filter-btn" data-filter="hospitality"><i class="fa-solid fa-hotel"></i> Hospitality</button>
+                <button class="filter-btn" data-filter="museums"><i class="fa-solid fa-building-columns"></i> Museums</button>
+                <button class="filter-btn" data-filter="film"><i class="fa-solid fa-clapperboard"></i> Film & TV</button>
+                <button class="filter-btn" data-filter="restoration"><i class="fa-solid fa-pen-ruler"></i> Restoration</button>
+            </div>
+
+            <!-- Dynamic Image Container -->
+            <div class="gallery-grid-dynamic reveal" id="galleryGrid">
+                <!-- Populated via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section bg-dark-texture">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag"><i class="fa-solid fa-paper-plane"></i> QUOTES & INQUIRIES</span>
+                <h2 class="section-title">Start Your Project With Us</h2>
+            </div>
+
+            <div class="contact-grid grid-2">
+                <!-- Direct Info -->
+                <div class="contact-info reveal">
+                    <h3>Direct Workshop Assistance</h3>
+                    <p class="contact-lead">We evaluate your blueprints and technical specifications to offer an exact fabrication proposal.</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4>Email Address</h4>
+                            <p><a href="mailto:anginet@watermarkexchangellc.com">anginet@watermarkexchangellc.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4>Location / Main Workshop</h4>
+                            <p>1061 Tildenville School Rd, Winter Garden, FL 34787</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <h4>Operating Hours</h4>
+                            <p>Monday to Friday: 8:00 AM – 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form targeting anginet@watermarkexchangellc.com -->
+                <div class="contact-form-wrapper reveal">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name"><i class="fa-solid fa-user"></i> Full Name</label>
+                            <input type="text" id="name" name="name" required placeholder="e.g. Carlos Mendoza">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone"><i class="fa-solid fa-phone-flip"></i> Contact Phone</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="(407) 000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="message"><i class="fa-solid fa-message"></i> Project Details</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Describe the scope, desired materials, or dimensions of your project..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-paper-plane"></i> Send Email</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="logo.jpg" alt="Watermark Exchange LLC" class="footer-logo">
+                <p>&copy; Watermark Exchange LLC. Specialists in Custom Carpentry, Metalwork, and Fabrication.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Production</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Dynamic Floating Buttons (WhatsApp & YouTube) -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/14076942050?text=Hello,%20I%20would%20like%20to%20request%20a%20quote%20for%20a%20project" target="_blank" class="float-btn whatsapp-float" data-tooltip="Quote via WhatsApp" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://www.youtube.com/@thegreatzuly" target="_blank" class="float-btn youtube-float" data-tooltip="YouTube Channel" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+    </div>
+
+    <!-- Embedded JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. Mobile Hamburger Menu ---
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+            }
+
+            // --- 2. Active Link Indicator on Scroll (Scrollspy) ---
+            const sections = document.querySelectorAll('section[id]');
+
+            const scrollActive = () => {
+                const scrollY = window.pageYOffset;
+
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 100;
+                    const sectionId = current.getAttribute('id');
+                    const navLink = document.querySelector(`.nav-menu a[href*=${sectionId}]`);
+
+                    if (navLink) {
+                        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                            navLink.classList.add('active');
+                        } else {
+                            navLink.classList.remove('active');
+                        }
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', scrollActive);
+
+            // --- 3. Scroll Animations (Intersection Observer) ---
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.12
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // --- 4. Dynamic Category Gallery (English Titles & Descriptions) ---
+            const galleryData = {
+                themeparks: [
+                    { src: 'project-themeparks.jpg', title: 'Main Metal Structure', desc: 'Resistant structural design adapted to technical requirements.' },
+                    { src: 'project-themeparks-1.jpg', title: 'Wooden Component', desc: 'Specialized carpentry work and precision finishes.' },
+                    { src: 'project-themeparks-2.jpg', title: 'Assembly and Setup', desc: 'Robust support and fixation to ensure maximum durability.' },
+                    { src: 'project-themeparks-3.jpg', title: 'High-Quality Finishes', desc: 'Meticulous details and specialized protective treatments.' }
+                ],
+                residential: [
+                    { src: 'project-residential.jpg', title: 'Structural Metalwork', desc: 'Steel fabrication with high-resistance profiles.' },
+                    { src: 'project-residential-1.jpg', title: 'Furniture & Structure', desc: 'Harmonious combination of metal and wood elements.' },
+                    { src: 'project-residential-2.jpg', title: 'Outdoor Structure', desc: 'Components treated to withstand environmental conditions.' },
+                    { src: 'project-residential-3.jpg', title: 'Panels & Cladding', desc: 'Installation of customized architectural elements.' }
+                ],
+                hospitality: [
+                    { src: 'project-hospitality.jpg', title: 'Integrated Commercial Design', desc: 'Functional solutions adapted to high-traffic spaces.' },
+                    { src: 'project-hospitality-1.jpg', title: 'Decorative Fine Metalwork', desc: 'Partition elements and supports with modern aesthetics.' },
+                    { src: 'project-hospitality-2.jpg', title: 'Architectural Carpentry', desc: 'Custom fine furniture and finishes.' },
+                    { src: 'project-hospitality-3.jpg', title: 'Structure & Support', desc: 'Solid metal and wood frameworks.' }
+                ],
+                museums: [
+                    { src: 'project-museums.jpg', title: 'Exhibition Structure', desc: 'Secure supports and clean finishes for displays.' },
+                    { src: 'project-museums-1.jpg', title: 'Custom Plates & Hardware', desc: 'Precision cutting and millimetric fixation.' },
+                    { src: 'project-museums-2.jpg', title: 'Technical Assembly', desc: 'Structures designed under exact specifications.' },
+                    { src: 'project-museums-3.jpg', title: 'Modular Panels', desc: 'Versatile systems for easy installation and adaptation.' }
+                ],
+                film: [
+                    { src: 'project-film.jpg', title: 'Mounting Framework', desc: 'Versatile structures designed for rapid deployment.' },
+                    { src: 'project-film-1.jpg', title: 'Custom Pieces', desc: 'Elements manufactured to measure upon request.' },
+                    { src: 'project-film-2.jpg', title: 'Modular Components', desc: 'Resistant and functional mechanical joints.' },
+                    { src: 'project-film-3.jpg', title: 'Structural Reinforcements', desc: 'Load-bearing supports designed for maximum safety.' }
+                ],
+                restoration: [
+                    { src: 'project-restoration.jpg', title: 'Hardware Maintenance', desc: 'Recovery and specialized treatment of parts.' },
+                    { src: 'project-restoration-1.jpg', title: 'Element Restoration', desc: 'Meticulous work on wood and metal surfaces.' },
+                    { src: 'project-restoration-2.jpg', title: 'Part Reproduction', desc: 'Molding and fabrication faithful to the original design.' },
+                    { src: 'project-restoration-3.jpg', title: 'Structural Consolidation', desc: 'Hidden reinforcements to extend lifespan.' }
+                ]
+            };
+
+            const grid = document.getElementById('galleryGrid');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            const renderGallery = (category) => {
+                if (!grid) return;
+                const items = galleryData[category] || [];
+                grid.innerHTML = '';
+
+                items.forEach((item) => {
+                    const card = document.createElement('div');
+                    card.className = 'gallery-card';
+                    card.innerHTML = `
+                        <img src="${item.src}" alt="${item.title}">
+                        <div class="gallery-badge"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        <div class="gallery-overlay">
+                            <h3>${item.title}</h3>
+                            <p>${item.desc}</p>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            };
+
+            // Load default first category
+            renderGallery('themeparks');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const category = button.getAttribute('data-filter');
+                    renderGallery(category);
+                });
+            });
+
+            // --- 5. Contact Form Handler pointing to anginet@watermarkexchangellc.com ---
+            const contactForm = document.getElementById('contactForm');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const phone = document.getElementById('phone').value;
+                    const message = document.getElementById('message').value;
+
+                    const recipient = 'anginet@watermarkexchangellc.com';
+                    const subject = encodeURIComponent(`New Quote Request / Message from ${name}`);
+                    const body = encodeURIComponent(`Full Name: ${name}\nPhone: ${phone}\n\nProject Details:\n${message}`);
+
+                    // Opens default email client with prefilled data
+                    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
