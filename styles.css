@@ -2,7 +2,7 @@
    Variables y Configuración Global - Estilo Azul Logo & Herrería/Carpintería
    ========================================================================== */
 :root {
-    --primary-blue: #00BCD4;         /* Azul Cian Acuarela (Extraído de tu logo) */
+    --primary-blue: #00BCD4;         /* Azul Cian Acuarela */
     --primary-blue-hover: #0097A7;   /* Tono Azul Oscuro para Hover */
     --wood-accent: #8C533C;          /* Tono Madera Cálida */
     --steel-dark: #111820;           /* Acero / Carbón Profundo */
@@ -23,6 +23,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* FIX CRÍTICO: Evita el desbordamiento y movimiento lateral en móviles */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
 }
 
 html {
@@ -99,7 +107,7 @@ img {
 }
 
 /* ==========================================================================
-   Encabezados y Botones Estilizados con Azul Logo
+   Encabezados y Botones Estilizados
    ========================================================================== */
 .section-header {
     text-align: center;
@@ -686,7 +694,7 @@ img {
 }
 
 /* ==========================================================================
-   Animaciones & Responsive
+   Animaciones & Responsive (Menú móvil corregido hacia la derecha)
    ========================================================================== */
 .reveal {
     opacity: 0;
@@ -716,20 +724,22 @@ img {
 
     .nav-menu {
         position: fixed;
-        left: -100%;
+        right: -100%;
+        left: auto;
         top: 80px;
         flex-direction: column;
         background-color: var(--steel-dark);
         width: 100%;
         text-align: center;
-        transition: 0.3s;
+        transition: right 0.3s ease;
         box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         padding: 30px 0;
         border-bottom: 2px solid var(--primary-blue);
     }
 
     .nav-menu.active {
-        left: 0;
+        right: 0;
+        left: auto;
     }
 
     .nav-list {
@@ -739,5 +749,81 @@ img {
 
     .hero-title {
         font-size: 2.3rem;
+    }
+}/* ==========================================================================
+   SOLUCIÓN DEFINITIVA CONTRA EL DESBORDAMIENTO HORIZONTAL EN MÓVILES
+   ========================================================================== */
+
+html {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Forzar que cualquier elemento caja, grilla o imagen respete el ancho de la pantalla */
+*, *::before, *::after {
+    box-sizing: border-box !important;
+}
+
+/* Asegurar que las imágenes y contenedores nunca fuercen el ancho */
+img, video, canvas, svg {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.container {
+    width: 90% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}/* ==========================================================================
+   AUDITORÍA Y BLOQUEO TOTAL DE DESBORDAMIENTO MÓVIL
+   ========================================================================== */
+@media (max-width: 768px) {
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        position: relative !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Forzar que todos los contenedores principales y secciones encajen exactamente */
+    .container, .section, header, footer, section {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Neutralizar cualquier grid o elemento hijo que se salga de la pantalla */
+    .grid-2, .services-grid, .gallery-grid-dynamic, .contact-grid {
+        width: 100% !important;
+        max-width: 100% !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Evitar que tarjetas o inputs rompan el diseño */
+    .service-card, .gallery-card, .contact-form-wrapper, .info-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 }

@@ -15,16 +15,13 @@
 
     <!-- Embedded CSS Styles -->
     <style>
-        /* ==========================================================================
-           Variables and Global Configuration - Logo Blue & Metal/Woodworking Style
-           ========================================================================== */
         :root {
-            --primary-blue: #00BCD4;         /* Cyan Watercolor Blue[cite: 5] */
-            --primary-blue-hover: #0097A7;   /* Darker Blue for Hover[cite: 5] */
-            --wood-accent: #8C533C;          /* Warm Wood Tone[cite: 5] */
-            --steel-dark: #111820;           /* Deep Charcoal Steel[cite: 5] */
-            --steel-medium: #1F2937;         /* Industrial Metal[cite: 5] */
-            --steel-light: #F3F4F6;          /* Light Workshop[cite: 5] */
+            --primary-blue: #00BCD4;
+            --primary-blue-hover: #0097A7;
+            --wood-accent: #8C533C;
+            --steel-dark: #111820;
+            --steel-medium: #1F2937;
+            --steel-light: #F3F4F6;
             --border-metal: #374151;
             --border-light: #E5E7EB;
             --text-dark: #111827;
@@ -40,6 +37,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        /* FIX ABSOLUTO CONTRA EL DESBORDAMIENTO HORIZONTAL EN MÓVILES */
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
         }
 
         html {
@@ -115,9 +120,6 @@
             }
         }
 
-        /* ==========================================================================
-           Headings & Styled Buttons
-           ========================================================================== */
         .section-header {
             text-align: center;
             max-width: 750px;
@@ -194,9 +196,6 @@
             width: 100%;
         }
 
-        /* ==========================================================================
-           Header / Navbar
-           ========================================================================== */
         .header {
             position: fixed;
             top: 0;
@@ -276,9 +275,6 @@
             transition: var(--transition);
         }
 
-        /* ==========================================================================
-           Hero Section
-           ========================================================================== */
         .hero-section {
             position: relative;
             height: 90vh;
@@ -353,9 +349,6 @@
             flex-wrap: wrap;
         }
 
-        /* ==========================================================================
-           About Section
-           ========================================================================== */
         .about-image-wrapper {
             position: relative;
         }
@@ -390,9 +383,6 @@
             color: var(--text-muted);
         }
 
-        /* ==========================================================================
-           Services Section
-           ========================================================================== */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -432,9 +422,6 @@
             font-size: 0.95rem;
         }
 
-        /* ==========================================================================
-           Gallery Section
-           ========================================================================== */
         .gallery-filters {
             display: flex;
             justify-content: center;
@@ -554,9 +541,6 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* ==========================================================================
-           Contact Section
-           ========================================================================== */
         .contact-info h3 {
             font-size: 2rem;
             color: var(--white);
@@ -649,9 +633,6 @@
             box-shadow: 0 0 8px rgba(0, 188, 212, 0.3);
         }
 
-        /* ==========================================================================
-           Footer
-           ========================================================================== */
         .footer {
             background-color: #0B0F14;
             color: var(--white);
@@ -712,9 +693,6 @@
             }
         }
 
-        /* ==========================================================================
-           Dynamic Floating Buttons (WhatsApp & YouTube)
-           ========================================================================== */
         .floating-buttons {
             position: fixed;
             bottom: 25px;
@@ -782,9 +760,6 @@
             opacity: 1;
         }
 
-        /* ==========================================================================
-           Animations & Responsive
-           ========================================================================== */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -796,6 +771,7 @@
             transform: translateY(0);
         }
 
+        /* CONFIGURACIÓN MÓVIL CORRECTA SIN DESBORDAMIENTO LATERAL */
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -813,20 +789,22 @@
 
             .nav-menu {
                 position: fixed;
-                left: -100%;
+                right: -100%;
+                left: auto;
                 top: 90px;
                 flex-direction: column;
                 background-color: var(--steel-dark);
                 width: 100%;
                 text-align: center;
-                transition: 0.3s;
+                transition: right 0.3s ease;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.5);
                 padding: 30px 0;
                 border-bottom: 2px solid var(--primary-blue);
             }
 
             .nav-menu.active {
-                left: 0;
+                right: 0;
+                left: auto;
             }
 
             .nav-list {
@@ -1111,7 +1089,7 @@
 
             revealElements.forEach(el => revealObserver.observe(el));
 
-            // --- 4. Dynamic Category Gallery (English Titles & Descriptions) ---
+            // --- 4. Dynamic Category Gallery ---
             const galleryData = {
                 themeparks: [
                     { src: 'project-themeparks.jpg', title: 'Main Metal Structure', desc: 'Resistant structural design adapted to technical requirements.' },
@@ -1174,7 +1152,6 @@
                 });
             };
 
-            // Load default first category
             renderGallery('themeparks');
 
             filterButtons.forEach(button => {
@@ -1186,7 +1163,7 @@
                 });
             });
 
-            // --- 5. Contact Form Handler pointing to anginet@watermarkexchangellc.com ---
+            // --- 5. Contact Form Handler ---
             const contactForm = document.getElementById('contactForm');
 
             if (contactForm) {
@@ -1201,7 +1178,6 @@
                     const subject = encodeURIComponent(`New Quote Request / Message from ${name}`);
                     const body = encodeURIComponent(`Full Name: ${name}\nPhone: ${phone}\n\nProject Details:\n${message}`);
 
-                    // Opens default email client with prefilled data
                     window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
                 });
             }
