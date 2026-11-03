@@ -135,23 +135,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 5. Manejo del Formulario de Contacto ---
+  // --- 5. Manejo del Formulario de Contacto (Redirección directa a Gmail Web) ---
     const contactForm = document.getElementById('contactForm');
 
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
+            // Capturar los valores ingresados por el usuario
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
 
+            // Definir datos del correo
             const recipient = 'anginet@watermarkexchangellc.com';
             const subject = encodeURIComponent(`New Quote Request / Message from ${name}`);
             const body = encodeURIComponent(`Full Name: ${name}\nPhone: ${phone}\n\nProject Details:\n${message}`);
 
-            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            // Enlace directo a la interfaz de redacción web de Gmail
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+            
+            // Abrir Gmail en una nueva pestaña de forma segura
+            window.open(gmailUrl, '_blank');
         });
     }
-
-});
