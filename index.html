@@ -541,6 +541,65 @@
             to { opacity: 1; transform: scale(1); }
         }
 
+        /* --- Estilos para la Nueva Sección de Compañías / Partners --- */
+        .partners-section {
+            background-color: var(--steel-medium);
+            border-top: 1px solid var(--border-metal);
+            border-bottom: 1px solid var(--border-metal);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .partner-card {
+            background-color: var(--steel-dark);
+            border: 1px solid var(--border-metal);
+            border-radius: 6px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 8px 20px rgba(0, 188, 212, 0.2);
+        }
+
+        .partner-logo {
+            max-height: 65px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(20%) brightness(1.1);
+            transition: var(--transition);
+            margin-bottom: 10px;
+        }
+
+        .partner-card:hover .partner-logo {
+            filter: grayscale(0%) brightness(1.2);
+            transform: scale(1.05);
+        }
+
+        .partner-name {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #D1D5DB;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .contact-info h3 {
             font-size: 2rem;
             color: var(--white);
@@ -722,12 +781,13 @@
             transform: scale(1.1);
         }
 
-        .whatsapp-float {
-            background-color: #25D366;
+        /* Botón flotante cambiado a Gmail con los colores corporativos */
+        .gmail-float {
+            background-color: #EA4335;
         }
 
-        .whatsapp-float:hover {
-            background-color: #20ba5a;
+        .gmail-float:hover {
+            background-color: #d33426;
         }
 
         .youtube-float {
@@ -937,6 +997,55 @@
         </div>
     </section>
 
+    <!-- Trusted Partners / Companies Section -->
+    <section class="section partners-section bg-dark-texture">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag"><i class="fa-solid fa-handshake"></i> TRUSTED COLLABORATIONS</span>
+                <h2 class="section-title" style="color: #FFFFFF !important;">Companies We Have Worked With</h2>
+                <p class="section-description" style="color: #9CA3AF !important;">Proud partners in fabrication and specialized manufacturing for industry leaders.</p>
+            </div>
+
+            <div class="partners-grid reveal">
+                <!-- 1. The Home Depot -->
+                <div class="partner-card">
+                    <img src="home-depot.jpg" alt="The Home Depot" class="partner-logo">
+                    <span class="partner-name">The Home Depot</span>
+                </div>
+                <!-- 2. BYXS Commercial -->
+                <div class="partner-card">
+                    <img src="byxs-commercial.jpg" alt="BYXS Commercial" class="partner-logo">
+                    <span class="partner-name">BYXS Commercial</span>
+                </div>
+                <!-- 3. Artisan Incorporated -->
+                <div class="partner-card">
+                    <img src="artisan-incorporated.jpg" alt="Artisan Incorporated" class="partner-logo">
+                    <span class="partner-name">Artisan Incorporated</span>
+                </div>
+                <!-- 4. Universal Orlando Resort -->
+                <div class="partner-card">
+                    <img src="universal-orlando.jpg" alt="Universal Orlando Resort" class="partner-logo">
+                    <span class="partner-name">Universal Orlando Resort</span>
+                </div>
+                <!-- 5. Hard Rock Hotel -->
+                <div class="partner-card">
+                    <img src="hard-rock-hotel.jpg" alt="Hard Rock Hotel" class="partner-logo">
+                    <span class="partner-name">Hard Rock Hotel</span>
+                </div>
+                <!-- 6. Mango Tropical Cafe Orlando -->
+                <div class="partner-card">
+                    <img src="mango-tropical-cafe.jpg" alt="Mango Tropical Cafe Orlando" class="partner-logo">
+                    <span class="partner-name">Mango Tropical Cafe</span>
+                </div>
+                <!-- 7. Disney Parks -->
+                <div class="partner-card">
+                    <img src="disney-parks.jpg" alt="Disney Parks" class="partner-logo">
+                    <span class="partner-name">Disney Parks</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="section contact-section bg-dark-texture">
         <div class="container">
@@ -1015,10 +1124,10 @@
         </div>
     </footer>
 
-    <!-- Dynamic Floating Buttons (WhatsApp & YouTube) -->
+    <!-- Dynamic Floating Buttons (Gmail & YouTube) -->
     <div class="floating-buttons">
-        <a href="https://wa.me/14076942050?text=Hello,%20I%20would%20like%20to%20request%20a%20quote%20for%20a%20project" target="_blank" class="float-btn whatsapp-float" data-tooltip="Quote via WhatsApp" aria-label="WhatsApp">
-            <i class="fa-brands fa-whatsapp"></i>
+        <a href="mailto:anginet@watermarkexchangellc.com?subject=Inquiry%20from%20Website" class="float-btn gmail-float" data-tooltip="Send Email" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
         </a>
         <a href="https://www.youtube.com/@thegreatzuly" target="_blank" class="float-btn youtube-float" data-tooltip="YouTube Channel" aria-label="YouTube">
             <i class="fa-brands fa-youtube"></i>
